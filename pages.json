@@ -1,0 +1,56 @@
+{
+  "pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+    {
+      "path": "pages/tab-bar/home/home",
+      "style": {
+        "navigationBarTitleText": "首页",
+        "enablePullDownRefresh": false,
+        "navigationStyle":"custom",
+        "navigationBarTextStyle":"white"
+      }
+
+    }, {
+      "path": "pages/tab-bar/follow/follow",
+      "style": {
+        "navigationBarTitleText": "关注",
+        "enablePullDownRefresh": false
+      }
+
+    }, {
+      "path": "pages/tab-bar/my/my",
+      "style": {
+        "navigationBarTitleText": "我的",
+        "enablePullDownRefresh": false
+      }
+
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+
+  "tabBar": {
+    "color": "#666",
+    "selectedColor": "#f07373",
+    "backgroundColor": "#FFFFFF",
+    "list": [{
+      "pagePath": "pages/tab-bar/home/home",
+      "iconPath": "static/home.png",
+      "selectedIconPath": "static/home-active.png",
+      "text": "首页"
+    }, {
+      "pagePath": "pages/tab-bar/follow/follow",
+      "iconPath": "static/follow.png",
+      "selectedIconPath": "static/follow-active.png",
+      "text": "关注"
+    }, {
+      "pagePath": "pages/tab-bar/my/my",
+      "iconPath": "static/my.png",
+      "selectedIconPath": "static/my-active.png",
+      "text": "我的"
+    }]
+  }
+}
