@@ -1,0 +1,1 @@
+<view class="scroll-list-y"><scroll-view class="scroll-container" scroll-y><view class="list-wrapper"><slot></slot></view></scroll-view></view>

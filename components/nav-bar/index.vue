@@ -6,7 +6,7 @@
       <!-- 搜索框 -->
       <view class="nav-bar-content" :style="{height: navBarHeight + 'px' }">
         <view class="nav-bar-search" :style="{height: searchHeight + 'px', width: searchWidth + 'px' }">
-          <view class="icon-search" />
+          <uni-icons type="search" size="18" color="#999" style="margin-right: 10px;"></uni-icons>
           <view class="search-txt">uni-app, vue</view>
         </view>
       </view>
@@ -73,7 +73,7 @@ export default {
         color: #999;
         width: 100%;
         height: 30px;
-        border-radius: 15rpx;
+        border-radius: 15px;
         display: flex;
         flex-flow: row nowrap;
         align-items: center;
