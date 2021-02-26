@@ -40,7 +40,16 @@ page {
   width: 100%;
   box-sizing: border-box;
 }
-.home .scroll-list {
+.home .list {
+  height: 100%;
+}
+.home .list .swiper {
+  height: 100%;
+}
+.home .list .swiper .swiper-item {
+  height: 100%;
+}
+.home .list .swiper .swiper-item .scroll-list {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
           flex: 1;

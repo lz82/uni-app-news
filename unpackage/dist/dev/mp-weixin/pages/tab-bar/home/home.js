@@ -152,7 +152,18 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
-var _services = __webpack_require__(/*! ../../../services */ 20);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var NavBar = function NavBar() {__webpack_require__.e(/*! require.ensure | components/nav-bar/index */ "components/nav-bar/index").then((function () {return resolve(__webpack_require__(/*! ../../../components/nav-bar */ 40));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Tab = function Tab() {__webpack_require__.e(/*! require.ensure | components/tab/index */ "components/tab/index").then((function () {return resolve(__webpack_require__(/*! ../../../components/tab */ 47));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var ScrollListY = function ScrollListY() {__webpack_require__.e(/*! require.ensure | components/scroll-list-y/index */ "components/scroll-list-y/index").then((function () {return resolve(__webpack_require__(/*! ../../../components/scroll-list-y */ 54));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var ListCard = function ListCard() {__webpack_require__.e(/*! require.ensure | components/list-card/index */ "components/list-card/index").then((function () {return resolve(__webpack_require__(/*! ../../../components/list-card */ 61));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
+
+
+
+
+
+
+
+
+
+var _services = __webpack_require__(/*! ../../../services */ 20);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var NavBar = function NavBar() {__webpack_require__.e(/*! require.ensure | components/nav-bar/index */ "components/nav-bar/index").then((function () {return resolve(__webpack_require__(/*! ../../../components/nav-bar */ 40));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Tab = function Tab() {__webpack_require__.e(/*! require.ensure | components/tab/index */ "components/tab/index").then((function () {return resolve(__webpack_require__(/*! ../../../components/tab */ 47));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var ScrollListY = function ScrollListY() {__webpack_require__.e(/*! require.ensure | components/scroll-list-y/index */ "components/scroll-list-y/index").then((function () {return resolve(__webpack_require__(/*! ../../../components/scroll-list-y */ 54));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var ListCard = function ListCard() {Promise.all(/*! require.ensure | components/list-card/index */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/list-card/index")]).then((function () {return resolve(__webpack_require__(/*! ../../../components/list-card */ 61));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 {
   name: 'Home',
@@ -167,7 +178,9 @@ var _services = __webpack_require__(/*! ../../../services */ 20);function _inter
   data: function data() {
     return {
       tabList: [],
-      currentTab: 0 };
+      currentTab: 0,
+      list: [],
+      cachedList: {} };
 
   },
 
@@ -178,17 +191,46 @@ var _services = __webpack_require__(/*! ../../../services */ 20);function _inter
   },
 
   methods: {
-    init: function init() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.prev = 0;_context.next = 3;return (
+    init: function init() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res, list;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.prev = 0;_context.next = 3;return (
 
                   _services.homeApi.getLabel());case 3:res = _context.sent;
-                _this2.tabList = res;_context.next = 10;break;case 7:_context.prev = 7;_context.t0 = _context["catch"](0);
+                _this2.tabList = res;_context.next = 7;return (
 
-                console.log(_context.t0);case 10:case "end":return _context.stop();}}}, _callee, null, [[0, 7]]);}))();
+                  _services.homeApi.getArticleList(_this2.currentArticleType));case 7:list = _context.sent;
+                // this.list = list.data
+                // this.cachedList[0] = list.data
+                _this2.$set(_this2.cachedList, 0, list.data);_context.next = 14;break;case 11:_context.prev = 11;_context.t0 = _context["catch"](0);
+
+
+                console.log(_context.t0);case 14:case "end":return _context.stop();}}}, _callee, null, [[0, 11]]);}))();
 
     },
 
     onTabClick: function onTabClick(item, index) {
       this.currentTab = index;
+    },
+
+    onSwiperChange: function onSwiperChange(_ref) {var current = _ref.detail.current;
+      this.currentTab = current;
+    } },
+
+
+  computed: {
+    currentArticleType: function currentArticleType() {
+      return this.tabList[this.currentTab].name;
+    } },
+
+
+  watch: {
+    currentTab: function currentTab(newVal) {var _this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var list;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.prev = 0;_context2.next = 3;return (
+
+                  _services.homeApi.getArticleList(_this3.currentArticleType));case 3:list = _context2.sent;
+                // this.list = list.data
+                // this.cachedList[newVal] = list.data
+                _this3.$set(_this3.cachedList, newVal, list.data);_context2.next = 10;break;case 7:_context2.prev = 7;_context2.t0 = _context2["catch"](0);
+
+                console.log(_context2.t0);case 10:case "end":return _context2.stop();}}}, _callee2, null, [[0, 7]]);}))();
+
     } } };exports.default = _default;
 
 /***/ }),

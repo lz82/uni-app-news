@@ -1,35 +1,53 @@
 <template>
 	<view class="list-card">
 		<view class="img">
-      <image src="/static/follow-active.png" mode="aspectFill" />
+      <image :src="cover || defaultCover" mode="aspectFill" />
     </view>
     
     <view class="content">
       <view class="title">
         <text>
-          uni-app 开发框架
+          {{title}}
         </text>
       </view>
       <view class="desc">
         <view class="tag-wrapper">
-          <view class="tag">前端</view>
-          <view class="tag">后端</view>
+          <view class="tag">{{tag}}</view>
         </view>
-        <view class="cnt">100浏览</view>
+        <view class="cnt">{{browse}}浏览</view>
       </view>
     </view>
 	</view>
 </template>
 
 <script>
+  import defaultCover from './follow-active.png';
+  
 	export default {
     props: {
+      title: {
+        type: String,
+        required: true
+      },
       
+      cover: {
+        type: String
+      },
+      
+      tag: {
+        type: String,
+        required: true
+      },
+      
+      browse: {
+        type: Number,
+        default: 0
+      }
     },
     
 		data() {
 			return {
-				
+				defaultCover
 			};
 		}
 	}

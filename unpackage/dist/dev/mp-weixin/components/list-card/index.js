@@ -114,38 +114,56 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default =
-{
-  props: {},
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _followActive = _interopRequireDefault(__webpack_require__(/*! ./follow-active.png */ 83));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default = { props: { title: { type: String, required: true }, cover: { type: String }, tag: { type: String, required: true }, browse: { type: Number, default: 0 } },
 
   data: function data() {
-    return {};
-
+    return {
+      defaultCover: _followActive.default };
 
   } };exports.default = _default;
 
