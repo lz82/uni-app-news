@@ -40,9 +40,6 @@ page {
   width: 100%;
   box-sizing: border-box;
 }
-.home .list {
-  height: 100%;
-}
 .home .list .swiper {
   height: 100%;
 }

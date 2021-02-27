@@ -1,19 +1,15 @@
 <template>
   <view class="home">
-    <nav-bar />
+    <nav-bar ref="navBar" />
     <tab :label="tabList" :current="currentTab" @tab-click="onTabClick" />
-    <div class="list">
+    <div class="list" :style="{ height: listHeight }">
       <swiper class="swiper" :current="currentTab" @change="onSwiperChange">
-        <swiper-item class="swiper-item" v-for="i in 6">
-          <scroll-list-y class="scroll-list">
+        <swiper-item class="swiper-item" v-for="i in tabList.length">
+          <scroll-list-y class="scroll-list" @scrolltolower="onScrollToLower">
             <view v-for="item in cachedList[currentTab]" :key="item._id">
-              <list-card
-                :title="item.title"
-                :cover="item.cover[0]"
-                :tag="item.classify"
-                :browse="item.browse_count"
-              />
+              <list-card :title="item.title" :cover="item.cover[0]" :tag="item.classify" :browse="item.browse_count" />
             </view>
+            <uni-load-more v-show="cachedStatus[currentTab].status === 'loading' || cachedList[currentTab].length > 6" :status="cachedStatus[currentTab].status" />
           </scroll-list-y>
         </swiper-item>
       </swiper>
@@ -42,8 +38,8 @@ export default {
     return {
       tabList: [],
       currentTab: 0,
-      list: [],
-      cachedList: {}
+      cachedList: {},
+      cachedStatus: {}
     };
   },
 
@@ -56,14 +52,25 @@ export default {
   methods: {
     async init() {
       try {
+        this.cachedStatus[0] = {
+          status: 'loading',
+          pageIndex: 1,
+          pageSize: 7
+        };
         const res = await homeApi.getLabel();
-        this.tabList = res;
+        this.tabList = [{ _id: 0, name: '全部', user: [] }, ...res];
 
-        const list = await homeApi.getArticleList(this.currentArticleType);
-        // this.list = list.data
-        // this.cachedList[0] = list.data
-        this.$set(this.cachedList, 0, list.data);
-        
+        const list = await homeApi.getArticleList({
+          ...this.cachedStatus[0],
+          classify: this.currentArticleType
+        });
+        console.log(list);
+        this.$set(this.cachedList, this.currentTab, list.data);
+        if (list.affectedDocs === 0) {
+          this.cachedStatus[this.currentTab].status = 'nomore';
+        } else {
+          this.cachedStatus[this.currentTab].status = 'more';
+        }
       } catch (err) {
         console.log(err);
       }
@@ -75,24 +82,65 @@ export default {
 
     onSwiperChange({ detail: { current } }) {
       this.currentTab = current;
+    },
+
+    onScrollToLower() {
+      const { status, pageSize } = this.cachedStatus[this.currentTab];
+      if (status === 'more') {
+        this.getArticleList(++this.cachedStatus[this.currentTab].pageIndex, pageSize, this.currentTab);
+      }
+    },
+
+    async getArticleList(pageIndex, pageSize = 6, currentTab) {
+      try {
+        this.cachedStatus[currentTab]
+          ? (this.cachedStatus[currentTab].status = 'loading')
+          : (this.cachedStatus[currentTab] = {
+              status: 'loading',
+              pageIndex,
+              pageSize
+            });
+        this.$forceUpdate();
+        const list = await homeApi.getArticleList({
+          classify: this.currentArticleType,
+          pageIndex,
+          pageSize
+        });
+
+        const oldList = this.cachedList[currentTab] || [];
+        oldList.push(...list.data);
+        this.$set(this.cachedList, currentTab, oldList);
+
+        if (list.affectedDocs === 0) {
+          this.cachedStatus[currentTab].status = 'nomore';
+        } else {
+          this.cachedStatus[currentTab].status = 'more';
+        }
+      } catch (err) {
+        console.log(err);
+      }
     }
   },
 
   computed: {
     currentArticleType() {
       return this.tabList[this.currentTab].name;
+    },
+
+    listHeight() {
+      if (this.$refs.navBar) {
+        const topHeight = this.$refs.navBar.statusBarHeight + this.$refs.navBar.navBarHeight + 50;
+        return `calc(100% - ${topHeight}px)`;
+      } else {
+        return `calc(100% - 100px)`;
+      }
     }
   },
 
   watch: {
-    async currentTab(newVal) {
-      try {
-        const list = await homeApi.getArticleList(this.currentArticleType);
-        // this.list = list.data
-        // this.cachedList[newVal] = list.data
-        this.$set(this.cachedList, newVal, list.data);
-      } catch (err) {
-        console.log(err);
+    currentTab(newVal) {
+      if (!this.cachedList[newVal] || !this.cachedList[newVal].length) {
+        this.getArticleList(1, 7, newVal);
       }
     }
   }
@@ -112,8 +160,6 @@ page {
   box-sizing: border-box;
 
   .list {
-    height: 100%;
-
     .swiper {
       height: 100%;
 

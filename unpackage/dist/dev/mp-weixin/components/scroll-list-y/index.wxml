@@ -1,1 +1,1 @@
-<view class="scroll-list-y"><scroll-view class="scroll-container" scroll-y><view class="list-wrapper"><slot></slot></view></scroll-view></view>
+<view class="scroll-list-y"><scroll-view class="scroll-container" scroll-y="{{true}}" data-event-opts="{{[['scrolltolower',[['onScrollToLower',['$event']]]]]}}" bindscrolltolower="__e"><view class="list-wrapper"><slot></slot></view></scroll-view></view>

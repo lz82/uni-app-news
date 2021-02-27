@@ -4,6 +4,7 @@
   "navigationStyle": "custom",
   "navigationBarTextStyle": "white",
   "usingComponents": {
+    "uni-load-more": "/uni_modules/uni-load-more/components/uni-load-more/uni-load-more",
     "nav-bar": "/components/nav-bar/index",
     "tab": "/components/tab/index",
     "scroll-list-y": "/components/scroll-list-y/index",

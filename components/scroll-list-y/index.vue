@@ -1,8 +1,8 @@
 <template>
   <view class="scroll-list-y">
-    <scroll-view class="scroll-container" scroll-y="">
+    <scroll-view class="scroll-container" scroll-y @scrolltolower="onScrollToLower">
       <view class="list-wrapper">
-        <slot />
+        <slot></slot>
       </view>
     </scroll-view>
   </view>
@@ -12,6 +12,12 @@
 export default {
   data() {
     return {};
+  },
+  
+  methods: {
+    onScrollToLower() {
+      this.$emit('scrolltolower')
+    }
   }
 };
 </script>

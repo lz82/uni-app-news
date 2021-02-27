@@ -4,6 +4,6 @@ export function getLabel() {
   return callFunction('getTab')
 }
 
-export function getArticleList(classify) {
-  return callFunction('getArticleList', {classify})
+export function getArticleList(data) {
+  return callFunction('getArticleList', data)
 }

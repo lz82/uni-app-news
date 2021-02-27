@@ -100,6 +100,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components
+try {
+  components = {
+    uniLoadMore: function() {
+      return __webpack_require__.e(/*! import() | uni_modules/uni-load-more/components/uni-load-more/uni-load-more */ "uni_modules/uni-load-more/components/uni-load-more/uni-load-more").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-load-more/components/uni-load-more/uni-load-more.vue */ 40))
+    }
+  }
+} catch (e) {
+  if (
+    e.message.indexOf("Cannot find module") !== -1 &&
+    e.message.indexOf(".vue") !== -1
+  ) {
+    console.error(e.message)
+    console.error("1. 排查组件名称拼写是否正确")
+    console.error(
+      "2. 排查组件是否符合 easycom 规范，文档：https://uniapp.dcloud.net.cn/collocation/pages?id=easycom"
+    )
+    console.error(
+      "3. 若组件不符合 easycom 规范，需手动引入，并在 components 中注册该组件"
+    )
+  } else {
+    throw e
+  }
+}
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -159,11 +182,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
-
-
-
-
-var _services = __webpack_require__(/*! ../../../services */ 20);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var NavBar = function NavBar() {__webpack_require__.e(/*! require.ensure | components/nav-bar/index */ "components/nav-bar/index").then((function () {return resolve(__webpack_require__(/*! ../../../components/nav-bar */ 40));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Tab = function Tab() {__webpack_require__.e(/*! require.ensure | components/tab/index */ "components/tab/index").then((function () {return resolve(__webpack_require__(/*! ../../../components/tab */ 47));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var ScrollListY = function ScrollListY() {__webpack_require__.e(/*! require.ensure | components/scroll-list-y/index */ "components/scroll-list-y/index").then((function () {return resolve(__webpack_require__(/*! ../../../components/scroll-list-y */ 54));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var ListCard = function ListCard() {Promise.all(/*! require.ensure | components/list-card/index */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/list-card/index")]).then((function () {return resolve(__webpack_require__(/*! ../../../components/list-card */ 61));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+var _services = __webpack_require__(/*! ../../../services */ 20);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function _toConsumableArray(arr) {return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();}function _nonIterableSpread() {throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(o);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _iterableToArray(iter) {if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);}function _arrayWithoutHoles(arr) {if (Array.isArray(arr)) return _arrayLikeToArray(arr);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var NavBar = function NavBar() {__webpack_require__.e(/*! require.ensure | components/nav-bar/index */ "components/nav-bar/index").then((function () {return resolve(__webpack_require__(/*! ../../../components/nav-bar */ 47));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var Tab = function Tab() {__webpack_require__.e(/*! require.ensure | components/tab/index */ "components/tab/index").then((function () {return resolve(__webpack_require__(/*! ../../../components/tab */ 54));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var ScrollListY = function ScrollListY() {__webpack_require__.e(/*! require.ensure | components/scroll-list-y/index */ "components/scroll-list-y/index").then((function () {return resolve(__webpack_require__(/*! ../../../components/scroll-list-y */ 61));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var ListCard = function ListCard() {Promise.all(/*! require.ensure | components/list-card/index */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/list-card/index")]).then((function () {return resolve(__webpack_require__(/*! ../../../components/list-card */ 68));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 {
   name: 'Home',
@@ -179,8 +198,8 @@ var _services = __webpack_require__(/*! ../../../services */ 20);function _inter
     return {
       tabList: [],
       currentTab: 0,
-      list: [],
-      cachedList: {} };
+      cachedList: {},
+      cachedStatus: {} };
 
   },
 
@@ -191,18 +210,29 @@ var _services = __webpack_require__(/*! ../../../services */ 20);function _inter
   },
 
   methods: {
-    init: function init() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res, list;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.prev = 0;_context.next = 3;return (
+    init: function init() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res, list;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.prev = 0;
 
-                  _services.homeApi.getLabel());case 3:res = _context.sent;
-                _this2.tabList = res;_context.next = 7;return (
+                _this2.cachedStatus[0] = {
+                  status: 'loading',
+                  pageIndex: 1,
+                  pageSize: 7 };_context.next = 4;return (
 
-                  _services.homeApi.getArticleList(_this2.currentArticleType));case 7:list = _context.sent;
-                // this.list = list.data
-                // this.cachedList[0] = list.data
-                _this2.$set(_this2.cachedList, 0, list.data);_context.next = 14;break;case 11:_context.prev = 11;_context.t0 = _context["catch"](0);
+                  _services.homeApi.getLabel());case 4:res = _context.sent;
+                _this2.tabList = [{ _id: 0, name: '全部', user: [] }].concat(_toConsumableArray(res));_context.next = 8;return (
 
+                  _services.homeApi.getArticleList(_objectSpread(_objectSpread({},
+                  _this2.cachedStatus[0]), {}, {
+                    classify: _this2.currentArticleType })));case 8:list = _context.sent;
 
-                console.log(_context.t0);case 14:case "end":return _context.stop();}}}, _callee, null, [[0, 11]]);}))();
+                console.log(list);
+                _this2.$set(_this2.cachedList, _this2.currentTab, list.data);
+                if (list.affectedDocs === 0) {
+                  _this2.cachedStatus[_this2.currentTab].status = 'nomore';
+                } else {
+                  _this2.cachedStatus[_this2.currentTab].status = 'more';
+                }_context.next = 17;break;case 14:_context.prev = 14;_context.t0 = _context["catch"](0);
+
+                console.log(_context.t0);case 17:case "end":return _context.stop();}}}, _callee, null, [[0, 14]]);}))();
 
     },
 
@@ -212,25 +242,66 @@ var _services = __webpack_require__(/*! ../../../services */ 20);function _inter
 
     onSwiperChange: function onSwiperChange(_ref) {var current = _ref.detail.current;
       this.currentTab = current;
+    },
+
+    onScrollToLower: function onScrollToLower() {var _this$cachedStatus$th =
+      this.cachedStatus[this.currentTab],status = _this$cachedStatus$th.status,pageSize = _this$cachedStatus$th.pageSize;
+      if (status === 'more') {
+        this.getArticleList(++this.cachedStatus[this.currentTab].pageIndex, pageSize, this.currentTab);
+      }
+    },
+
+    getArticleList: function getArticleList(pageIndex) {var _arguments = arguments,_this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var pageSize, currentTab, list, oldList;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:pageSize = _arguments.length > 1 && _arguments[1] !== undefined ? _arguments[1] : 6;currentTab = _arguments.length > 2 ? _arguments[2] : undefined;_context2.prev = 2;
+
+                _this3.cachedStatus[currentTab] ?
+                _this3.cachedStatus[currentTab].status = 'loading' :
+                _this3.cachedStatus[currentTab] = {
+                  status: 'loading',
+                  pageIndex: pageIndex,
+                  pageSize: pageSize };
+
+                _this3.$forceUpdate();_context2.next = 7;return (
+                  _services.homeApi.getArticleList({
+                    classify: _this3.currentArticleType,
+                    pageIndex: pageIndex,
+                    pageSize: pageSize }));case 7:list = _context2.sent;
+
+
+                oldList = _this3.cachedList[currentTab] || [];
+                oldList.push.apply(oldList, _toConsumableArray(list.data));
+                _this3.$set(_this3.cachedList, currentTab, oldList);
+
+                if (list.affectedDocs === 0) {
+                  _this3.cachedStatus[currentTab].status = 'nomore';
+                } else {
+                  _this3.cachedStatus[currentTab].status = 'more';
+                }_context2.next = 17;break;case 14:_context2.prev = 14;_context2.t0 = _context2["catch"](2);
+
+                console.log(_context2.t0);case 17:case "end":return _context2.stop();}}}, _callee2, null, [[2, 14]]);}))();
+
     } },
 
 
   computed: {
     currentArticleType: function currentArticleType() {
       return this.tabList[this.currentTab].name;
+    },
+
+    listHeight: function listHeight() {
+      if (this.$refs.navBar) {
+        var topHeight = this.$refs.navBar.statusBarHeight + this.$refs.navBar.navBarHeight + 50;
+        return "calc(100% - ".concat(topHeight, "px)");
+      } else {
+        return "calc(100% - 100px)";
+      }
     } },
 
 
   watch: {
-    currentTab: function currentTab(newVal) {var _this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var list;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.prev = 0;_context2.next = 3;return (
-
-                  _services.homeApi.getArticleList(_this3.currentArticleType));case 3:list = _context2.sent;
-                // this.list = list.data
-                // this.cachedList[newVal] = list.data
-                _this3.$set(_this3.cachedList, newVal, list.data);_context2.next = 10;break;case 7:_context2.prev = 7;_context2.t0 = _context2["catch"](0);
-
-                console.log(_context2.t0);case 10:case "end":return _context2.stop();}}}, _callee2, null, [[0, 7]]);}))();
-
+    currentTab: function currentTab(newVal) {
+      if (!this.cachedList[newVal] || !this.cachedList[newVal].length) {
+        this.getArticleList(1, 7, newVal);
+      }
     } } };exports.default = _default;
 
 /***/ }),

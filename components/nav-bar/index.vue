@@ -37,10 +37,10 @@ export default {
     // #ifndef H5 || APP-PLUS || MP-ALIPAY
     // 获取胶囊信息
     const menuButtonInfo = uni.getMenuButtonBoundingClientRect()
-    console.log(menuButtonInfo )
+    
     // 导航栏的高度 = （胶囊底部高度 - 状态栏高度） + （胶囊顶部高度 - 状态栏的高度）
     this.navBarHeight = (menuButtonInfo.bottom - systemInfo.statusBarHeight) + (menuButtonInfo.top - systemInfo.statusBarHeight)
-    console.log(this.navBarHeight)
+    
     this.searchHeight = menuButtonInfo.height
     this.searchWidth = menuButtonInfo.left - 15
     // #endif 
